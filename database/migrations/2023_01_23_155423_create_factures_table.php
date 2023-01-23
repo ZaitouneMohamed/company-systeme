@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hebergements', function (Blueprint $table) {
+        Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->string('prix_GB');
-            $table->string('lien');
-            $table->integer('user_id')->unsigned();
+            $table->string('montant');
+            $table->string('Reste');
+            $table->integer('fournisseur_id')->unsigned();
+            $table->string('benefice');
+            $table->string('avnace');
+            $table->string('mode');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hebergements');
+        Schema::dropIfExists('factures');
     }
 };

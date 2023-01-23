@@ -7,7 +7,7 @@
             @error('prix') <span class="test text-danger">{{ $message }}</span> @enderror
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">lieu :</label>
+            <label for="exampleInputEmail1" class="form-label">lien :</label>
             <input type="text" class="form-control" wire:model="lieu">
             @error('lieu') <span class="test text-danger">{{ $message }}</span> @enderror
         </div>
@@ -28,13 +28,13 @@
             <button type="submit" class="btn btn-primary">submit</button>
         @endif
     </form>
-    
-    <table class="table">
+
+    <table class="table" id="myTable">
         <thead>
           <tr>
             <th scope="col">name</th>
             <th scope="col">prix/GB</th>
-            <th scope="col">lieu</th>
+            <th scope="col">lien</th>
           </tr>
         </thead>
         <tbody>
