@@ -35,7 +35,7 @@ Route::middleware(['auth', 'role:super admin', 'activecheck'])->name('sadmin.')-
         Route::get('/users_list',  'users_list')->name('users.list');
         Route::get('/hebergement',  'hebergement')->name('hebergement');
         Route::get('/nom_domaine',  'nom_domain')->name('nom_domain');
-
+        // test here
         Route::get('/email_pro',  'emailPro')->name('email_pro');
         Route::get('/Cpanel', 'cpanel')->name('Cpanel');
         Route::get('/wordpress',  'wordpress')->name('wordpress');
