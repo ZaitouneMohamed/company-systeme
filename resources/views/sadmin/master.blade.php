@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Super Admin</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     @yield("links")
     @yield("styles")
@@ -82,7 +84,7 @@
                 </a>
                 <div id="collapsefour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('sadmin.fournisseur')}}">fournissuer</a>
+                        <a class="collapse-item" href="{{route('sadmin.fournisseur')}}">fournisseur</a>
                         <a class="collapse-item" href="{{route('sadmin.facture')}}">Facture</a>
                         <a class="collapse-item" href="{{route('sadmin.bon')}}">bons</a>
                         <a class="collapse-item" href="{{route('sadmin.suivis')}}">suivis</a>

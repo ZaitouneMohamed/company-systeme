@@ -16,6 +16,7 @@ class bon extends Model
         'benefice',
         'avance',
         'mode',
+        'suivi_id'
     ];
 
     public function fournisseur()

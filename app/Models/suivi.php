@@ -19,6 +19,14 @@ class suivi extends Model
         'categorie',
         'besoin'
     ];
+    public function facture()
+    {
+        return $this->belongsTo(facture::class);
+    }
 
-    
+    public function bon()
+    {
+        return $this->belongsTo(bon::class);
+    }
+
 }

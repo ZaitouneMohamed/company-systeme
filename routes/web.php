@@ -44,6 +44,12 @@ Route::middleware(['auth', 'role:super admin', 'activecheck'])->name('sadmin.')-
         Route::get('/wordpress',  'wordpress')->name('wordpress');
         Route::post('assign_role/{id}', 'assign_role')->name('assign.role');
         Route::delete('remove_role',  'remove_role')->name('remove.role');
+        Route::get('untacked_factures/{id}', 'facture_list_to_take')->name('untacked_factures');
+        Route::post('add_order_to_suivis/{id}', 'add_facture_to_suivis')->name('add_facture_to_suivi');
+        Route::get('untacked_Bons/{id}', 'bons_list_to_take')->name('untacked_bons');
+        Route::post('add_bon_to_suivis/{id}', 'add_bon_to_suivis')->name('add_bon_to_suivi');
+        Route::get('/suivi_pdf/{id}', 'suivi_pdf')->name('suivi.pdf');
+
     });
 
     Route::resource('roles', rolesController::class);

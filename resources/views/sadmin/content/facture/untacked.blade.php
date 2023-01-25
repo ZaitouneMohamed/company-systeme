@@ -19,12 +19,17 @@
                 <tr>
                     <td>{{$item->montant}}</td>
                     <td>{{$item->Reste}}</td>
-                    <td>{{$item->fournisseur->name}}</td>
+                    <td>{{$item->fournisseur->nom}}</td>
                     <td>{{$item->benefice}}</td>
                     <td>{{$item->avance}}</td>
                     <td>{{$item->mode}}</td>
                     <td>
-                        <button class="btn btn-success">update</button>
+                        <form action="{{route('sadmin.add_facture_to_suivi',$item->id)}}" method="POST">
+                            @method("POST")
+                            @csrf
+                            <input type="hidden" name="suivi_id" value="{{$suivi->id}}">
+                            <input class="btn btn-primary" type="submit" value="Take It">
+                        </form>
                     </td>
                 </tr>
             @endforeach

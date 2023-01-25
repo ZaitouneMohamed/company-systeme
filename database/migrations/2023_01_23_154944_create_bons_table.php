@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('benefice');
             $table->float('avance');
             $table->string('mode');
-            $table->integer('statue')->default(0);
+            $table->integer('suivi_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
