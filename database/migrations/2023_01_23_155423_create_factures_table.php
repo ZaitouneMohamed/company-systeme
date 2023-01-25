@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->string('montant');
-            $table->string('Reste');
+            $table->float('montant');
+            $table->float('Reste');
             $table->integer('fournisseur_id')->unsigned();
             $table->string('benefice');
-            $table->string('avnace');
+            $table->float('avance');
             $table->string('mode');
+            $table->integer('statue')->default(0);
             $table->timestamps();
         });
     }

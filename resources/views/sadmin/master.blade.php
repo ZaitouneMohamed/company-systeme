@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Super Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     @yield("links")
     @yield("styles")
     @livewireStyles
@@ -17,6 +18,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+        <script src="//unpkg.com/alpinejs" defer></script>
+
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('dashboard/css/sb-admin-2.min.css') }} " rel="stylesheet">
@@ -53,21 +56,40 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('sadmin.roles.index')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>roles</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route('sadmin.permissions.index')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>permissions</span></a>
-            </li>
-            <li class="nav-item active">
                 <a class="nav-link" href="{{route('sadmin.filemanager')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>filemanager</span></a>
             </li>
             <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa-light fa-user"></i>
+                    <span>Permissions</span>
+                </a>
+                <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('sadmin.roles.index')}}">roles</a>
+                        <a class="collapse-item" href="{{route('sadmin.permissions.index')}}">permissions</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefour"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa-light fa-user"></i>
+                    <span>Factures</span>
+                </a>
+                <div id="collapsefour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('sadmin.fournisseur')}}">fournissuer</a>
+                        <a class="collapse-item" href="{{route('sadmin.facture')}}">Facture</a>
+                        <a class="collapse-item" href="{{route('sadmin.bon')}}">bons</a>
+                        <a class="collapse-item" href="{{route('sadmin.suivis')}}">suivis</a>
+                    </div>
+                </div>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -269,10 +291,14 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('dashboard/vendor/jquery-easing/jquery.easing.min.js') }} "></script>
+        <!-- Page level plugins -->
+
+        <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('dashboard/js/sb-admin-2.min.js') }} "></script>
-
+    <script src="{{asset('dashboard/js/demo/datatables-demo.js')}}"></script>
     <!-- Page level plugins -->
     <script src="{{ asset('dashboard/vendor/chart.js/Chart.min.js') }} "></script>
     @livewireScripts

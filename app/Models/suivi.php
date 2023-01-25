@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class suivi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'service',
+        'activite',
+        'facture_id',
+        'bon_id',
+        'nom_societe',
+        'Secteur',
+        'categorie',
+        'besoin'
+    ];
+
+    
 }

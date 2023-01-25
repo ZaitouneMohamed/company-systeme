@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Sadmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\facture;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
@@ -69,5 +70,26 @@ class homeController extends Controller
 
     public function wordpress() {
         return view("sadmin.content.wordpress.index");
+    }
+
+    public function fournisseur() {
+        return view('sadmin.content.fournisseur.index');
+    }
+
+    public function facture() {
+        return view('sadmin.content.facture.index');
+    }
+
+    public function bon() {
+        return view('sadmin.content.bon.index');
+    }
+
+    public function suivis() {
+        return view('sadmin.content.suivis.index');
+    }
+
+    public function facture_list_to_take() {
+        $list = facture::all()->where('statue',0);
+        return view('sadmin.content.facture.untacked',compact('list'));
     }
 }

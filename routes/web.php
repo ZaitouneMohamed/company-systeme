@@ -37,6 +37,10 @@ Route::middleware(['auth', 'role:super admin', 'activecheck'])->name('sadmin.')-
         Route::get('/nom_domaine',  'nom_domain')->name('nom_domain');
         Route::get('/email_pro',  'emailPro')->name('email_pro');
         Route::get('/Cpanel', 'cpanel')->name('Cpanel');
+        Route::get('/fournissuers', 'fournisseur')->name('fournisseur');
+        Route::get('/factures', 'facture')->name('facture');
+        Route::get('/bons', 'bon')->name('bon');
+        Route::get('/suivi', 'suivis')->name('suivis');
         Route::get('/wordpress',  'wordpress')->name('wordpress');
         Route::post('assign_role/{id}', 'assign_role')->name('assign.role');
         Route::delete('remove_role',  'remove_role')->name('remove.role');

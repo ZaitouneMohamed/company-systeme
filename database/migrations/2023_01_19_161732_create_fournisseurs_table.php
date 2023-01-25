@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->id();
-            $table->integer('prix_HT');
-            $table->integer('prix_TTC');
+            $table->float('prix_HT');
+            $table->float('prix_TTC');
             $table->string('mode_payement');
             $table->string('nom');
             $table->string('déja_versé');
