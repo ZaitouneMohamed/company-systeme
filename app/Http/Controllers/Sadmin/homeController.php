@@ -93,38 +93,52 @@ class homeController extends Controller
 
     public function facture_list_to_take($id) {
         $data = facture::all()->where('suivi_id',null);
+        $my_data = facture::all()->where('suivi_id',$id);
         $suivi = suivi::find($id);
-        return view('sadmin.content.facture.untacked',compact('data','suivi'));
+        return view('sadmin.content.facture.untacked',compact('data','suivi','my_data'));
     }
 
     public function add_facture_to_suivis($id , Request $request) {
         $facture = facture::find($id);
-        $suivi = suivi::find($request->suivi_id);
+        if ($facture->suivi_id != null) {
+            return redirect()->route('sadmin.home');
+        }
         $facture->update([
-            "suivi_id" => $suivi->id
+            "suivi_id" => $request->suivi_id
         ]);
-        $suivi->update([
-            "facture_id" => $id
+        return redirect()->back();
+    }
+
+    public function delete_facture(Request $request) {
+        facture::find($request->f_id)->update([
+            "suivi_id" =>null
         ]);
-        return redirect()->route('sadmin.suivis');
+        return redirect()->back();
     }
 
     public function bons_list_to_take($id) {
         $data = bon::all()->where('suivi_id',null);
+        $my_data = bon::all()->where('suivi_id',$id);
         $suivi = suivi::find($id);
-        return view('sadmin.content.bon.untacked',compact('data','suivi'));
+        return view('sadmin.content.bon.untacked',compact('data','suivi','my_data'));
     }
 
     public function add_bon_to_suivis($id , Request $request) {
         $facture = bon::find($id);
-        $suivi = suivi::find($request->suivi_id);
+        if ($facture->suivi_id != null) {
+            return redirect()->route('sadmin.home');
+        }
         $facture->update([
-            "suivi_id" => $suivi->id
+            "suivi_id" => $request->suivi_id
         ]);
-        $suivi->update([
-            "bon_id" => $id
+        return redirect()->back();
+    }
+
+    public function delete_bon(Request $request) {
+        bon::find($request->b_id)->update([
+            "suivi_id" => null
         ]);
-        return redirect()->route('sadmin.suivis');
+        return redirect()->back();
     }
 
     public function suivi_pdf($id) {

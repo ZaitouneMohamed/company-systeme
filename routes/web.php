@@ -6,6 +6,7 @@ use App\Http\Controllers\Sadmin\homeController as shomeController;
 use App\Http\Controllers\Sadmin\permissionsController;
 use App\Http\Controllers\Sadmin\rolesController;
 use App\Http\Controllers\user\homeController as UserHomeController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,8 @@ Route::middleware(['auth', 'role:super admin', 'activecheck'])->name('sadmin.')-
         Route::post('add_order_to_suivis/{id}', 'add_facture_to_suivis')->name('add_facture_to_suivi');
         Route::get('untacked_Bons/{id}', 'bons_list_to_take')->name('untacked_bons');
         Route::post('add_bon_to_suivis/{id}', 'add_bon_to_suivis')->name('add_bon_to_suivi');
+        Route::delete('delete_facture_from_suivis',  'delete_facture')->name('remove.facture');
+        Route::delete('delete_bon_from_suivis',  'delete_bon')->name('remove.bon');
         Route::get('/suivi_pdf/{id}', 'suivi_pdf')->name('suivi.pdf');
 
     });

@@ -12,8 +12,6 @@ class suivi extends Model
     protected $fillable = [
         'service',
         'activite',
-        'facture_id',
-        'bon_id',
         'nom_societe',
         'Secteur',
         'categorie',
@@ -21,12 +19,12 @@ class suivi extends Model
     ];
     public function facture()
     {
-        return $this->belongsTo(facture::class);
+        return $this->hasMany(facture::class);
     }
 
     public function bon()
     {
-        return $this->belongsTo(bon::class);
+        return $this->hasMany(bon::class);
     }
 
 }

@@ -74,25 +74,7 @@ class Suivis extends Component
         $this->cancel();
     }
 
-    public function delete_bon($id) {
-        suivi::find($id)->update([
-            "bon_id" => null
-        ]);
-        bon::where('suivi_id',$id)->update([
-            "suivi_id" => null
-        ]);
-        $this->get_list();
-    }
-
-    public function delete_facture($id) {
-        suivi::find($id)->update([
-            "facture_id" => null
-        ]);
-        facture::where('suivi_id',$id)->update([
-            "suivi_id" => null
-        ]);
-        $this->get_list();
-    }
+    
 
     public function get_list()
     {

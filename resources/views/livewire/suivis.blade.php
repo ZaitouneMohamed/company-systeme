@@ -45,8 +45,8 @@
                     <tr>
                         <th>service</th>
                         <th>activite</th>
-                        <th>facture</th>
-                        <th>Bon</th>
+                        {{-- <th>facture</th>
+                        <th>Bon</th> --}}
                         <th>nom societe</th>
                         <th>secteur</th>
                         <th>categiorrie</th>
@@ -58,32 +58,14 @@
                 <tbody>
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{Str::limit($item->service, 2  ) }}</td>
+                            <td>{{$item->service}}</td>
                             <td>{{$item->activite}}</td>
-                            <td>
-                                @if ($item->facture_id)
-                                    {{$item->facture->benefice}}
-                                @else
-                                    <a href="{{route('sadmin.untacked_factures',$item->id)}}" class="btn btn-warning">add facture</a>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($item->bon_id)
-                                    {{$item->bon->Reste}}
-                                @else
-                                    <a href="{{route('sadmin.untacked_bons',$item->id)}}" class="btn btn-warning">add Bon</a>
-                                @endif
-                            </td>
                             <td>{{$item->nom_societe}}</td>
                             <td>{{$item->Secteur}}</td>
                             <td>{{$item->categorie}}</td>
                             <td>{{$item->besoin}}</td>
                             <td>
-                                @if ($item->facture_id)
-                                    {{$item->facture->montant - $item->facture->Reste}}
-                                @else
-                                    add facture 
-                                @endif
+                                {{ $item->facture->count() ? $item->facture->sum('montant') - $item->facture->sum('Reste') : null}}
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -91,14 +73,16 @@
                                       Dropdown
                                     </button>
                                     <ul class="dropdown-menu">
-                                        @if ($item->bon_id)
+                                        {{-- @if ($item->bon_id)
                                             <li><button wire:click="delete_bon({{$item->id}})" class="dropdown-item" type="button">delete bon</button></li>
-                                        @endif
+                                        @endif --}}
                                         <li><button class="dropdown-item" wire:click="get_one({{$item->id}})" type="button">update</button></li>
-                                        @if ($item->facture_id)
-                                            <li><button class="dropdown-item" type="button" wire:click="delete_facture({{$item->id}})">delete facture</button></li>
+                                        <li><a href="{{route('sadmin.untacked_factures',$item->id)}}" class="dropdown-item" type="button">Add Factures</a></li>
+                                        <li><a href="{{route('sadmin.untacked_bons',$item->id)}}" class="dropdown-item" type="button">Add bons</a></li>
+                                        {{-- @if ($item->facture_id)
+                                            <li><button class="dropdown-item" type="button" wire:click="delete_facture({{$item->id}})">delete facture</button></li> --}}
                                             <li><a href="{{route('sadmin.suivi.pdf',$item->id)}}" class="dropdown-item" type="button"><i class="bi bi-file-pdf"></i> PDF</a></li>
-                                        @endif
+                                        {{-- @endif --}}
                                         <li><button class="dropdown-item" wire:click="delete({{$item->id}})" type="button">Delete</button></li>
                                     </ul>
                                 </div>

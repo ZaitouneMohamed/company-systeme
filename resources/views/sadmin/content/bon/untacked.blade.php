@@ -1,11 +1,17 @@
 @extends('sadmin.master')
 
 @section("content")
+
 @if ($data->count() == 0)
     No bon here <a href="" class="btn btn-primary">Click Bon Add Bon Here</a>
 @else
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <div class="table-responsive" x-data="{open : false}">
+        <center>
+            <button class="btn btn-primary" @click="open = !open">click me</button>
+            {{-- <button class="btn btn-primary" @click="open = true">show</button>
+            <button class="btn btn-primary" @click="open = false">hide</button> --}}
+        </center>
+        <table class="table table-bordered" id="dataTable" x-show="open" x-transition width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>montaneet</th>
@@ -40,5 +46,28 @@
         </table>
     </div>
 @endif
+<div class="text-center">
+    <h1>Bon List</h1>
+    <div class="row row-cols-1 row-cols-lg-3 g-2 g-lg-3">
+        @foreach ($my_data as $item)
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <h5 class="card-title">montant : {{$item->montant}}</h5>
+                    <p class="card-text">Reste : {{$item->Reste}}</p>
+                    <p class="card-text">Fornisseur : {{$item->fournisseur->nom}}</p>
+                    <p class="card-text">Avance :{{$item->avance}}</p>
+                    <p class="card-text">Avance :{{$item->benefice}}</p>
+                    <p class="card-text">mode : {{$item->mode}}</p>
+                    <form action="{{route('sadmin.remove.facture')}}" method="POST">
+                        @method("delete")
+                        @csrf
+                        <input type="hidden" name="f_id" value="{{$item->id}}">
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 @endsection
 

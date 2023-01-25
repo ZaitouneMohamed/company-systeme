@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('service');
             $table->string('activite');
-            $table->integer('facture_id')->unsigned()->nullable();
-            $table->integer('bon_id')->unsigned()->nullable();
             $table->string('nom_societe');
             $table->string('Secteur');
             $table->string('categorie');
