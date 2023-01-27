@@ -8,8 +8,6 @@
     <div class="table-responsive" x-data="{open : false}">
         <center>
             <button class="btn btn-primary" @click="open = !open">click me</button>
-            {{-- <button class="btn btn-primary" @click="open = true">show</button>
-            <button class="btn btn-primary" @click="open = false">hide</button> --}}
         </center>
         <table class="table table-bordered" id="dataTable" x-show="open" x-transition width="100%" cellspacing="0">
             <thead>
@@ -58,10 +56,10 @@
                     <p class="card-text">Avance :{{$item->avance}}</p>
                     <p class="card-text">Avance :{{$item->benefice}}</p>
                     <p class="card-text">mode : {{$item->mode}}</p>
-                    <form action="{{route('sadmin.remove.facture')}}" method="POST">
+                    <form action="{{route('sadmin.remove.bon')}}" method="POST">
                         @method("delete")
                         @csrf
-                        <input type="hidden" name="f_id" value="{{$item->id}}">
+                        <input type="hidden" name="b_id" value="{{$item->id}}">
                         <input class="btn btn-danger" type="submit" value="Delete">
                     </form>
                 </div>
