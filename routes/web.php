@@ -62,7 +62,7 @@ Route::middleware(['auth', 'role:super admin', 'activecheck'])->name('sadmin.')-
     })->name("filemanager");
 });
 
-Route::middleware(['auth', 'role:admin|super admin', 'activecheck'])->name('admin.')->prefix("admin")->group(function () {
+Route::middleware(['auth', 'role:admin', 'activecheck'])->name('admin.')->prefix("admin")->group(function () {
     Route::controller(homeController::class)->group(function () {
         Route::get('/', 'index')->name('home');
         Route::get('/users', 'users')->name('users')->middleware('permission:add accounts');
@@ -82,6 +82,7 @@ Route::middleware(['auth', 'role:user|super admin', 'activecheck'])->name('user.
         Route::get('/email-pro', 'email_pro')->name('email_pro');
         Route::get('/cpanel', 'cpanel')->name('cpanel');
         Route::get('/wordpress', 'wordpress')->name('wordpress');
+        Route::get('/factures', 'factures')->name('factures');
     });
     Route::get('/', function () {
         return view('user.content.home');

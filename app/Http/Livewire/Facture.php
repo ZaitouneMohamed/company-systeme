@@ -4,13 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\facture as ModelsFacture;
 use App\Models\fournisseur;
+use App\Models\User;
 use Livewire\Component;
 
 class Facture extends Component
 {
 
-    public $data , $editing , $fournisseurs , $f_id;
-    public $montant , $reste , $fournisseur , $benefice , $avance , $mode;
+    public $users, $data , $editing , $fournisseurs , $f_id ;
+    public $montant , $reste , $fournisseur , $benefice ,$user ,$avance , $mode;
 
     public function render()
     {
@@ -26,6 +27,7 @@ class Facture extends Component
             "montant" => $this->montant,
             "Reste" => $this->reste,
             "fournisseur_id" => $this->fournisseur,
+            "user_id" => $this->user,
             "benefice" => $this->benefice,
             "avance" => $this->avance,
             "mode" => $this->mode,
@@ -79,7 +81,9 @@ class Facture extends Component
     public function get_data() {
         $d = ModelsFacture::all();
         $f = fournisseur::all();
+        $u = User::role('user')->get();
         $this->data = $d;
         $this->fournisseurs = $f;
+        $this->users = $u;
     }
 }

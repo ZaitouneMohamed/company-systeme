@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('montant');
             $table->float('Reste');
             $table->integer('fournisseur_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('benefice');
             $table->float('avance');
             $table->string('mode');

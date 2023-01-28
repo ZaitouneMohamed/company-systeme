@@ -74,7 +74,7 @@ class Suivis extends Component
         $this->cancel();
     }
 
-    
+
 
     public function get_list()
     {
@@ -84,16 +84,12 @@ class Suivis extends Component
 
     public function delete($id) {
         $s=suivi::find($id);
-        if ($s->facture_id) {
-            facture::where('suivi_id',$id)->update([
-                "suivi_id" => null
-            ]);
-        }
-        if ($s->bon_id) {
-            bon::where('suivi_id',$id)->update([
-                "suivi_id" => null
-            ]);
-        }
+        facture::where('suivi_id',$id)->update([
+            "suivi_id" => null
+        ]);
+        bon::where('suivi_id',$id)->update([
+            "suivi_id" => null
+        ]);
         $s->delete();
         $this->get_list();
     }

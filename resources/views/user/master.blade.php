@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     @livewireStyles
-
+    <script src="//unpkg.com/alpinejs" defer></script>
     <title>User</title>
     @yield("links")
     @yield("style")
@@ -74,6 +74,11 @@
                 <a class="nav-link" href="/filemanager">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>File Manager</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('user.factures') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Factures & Bons</span></a>
             </li>
 
 

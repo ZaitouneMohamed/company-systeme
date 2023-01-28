@@ -25,6 +25,16 @@
                 {{-- @error('user') <span class="test text-danger">{{ $message }}</span> @enderror --}}
             </div>
             <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Fournisseurs :</label>
+                <select class="form-control" wire:model="user">
+                    <option value=""></option>
+                    @foreach ( $users as $item)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                {{-- @error('user') <span class="test text-danger">{{ $message }}</span> @enderror --}}
+            </div>
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">benefice :</label>
                 <input type="text" class="form-control" wire:model="benefice">
                 {{-- @error('password') <span class="test text-danger">{{ $message }}</span> @enderror --}}
@@ -56,6 +66,7 @@
                 <th scope="col">Reste</th>
                 <th scope="col">Fournisseur</th>
                 <th scope="col">activite suivi</th>
+                <th scope="col">user</th>
                 <th scope="col">benefice</th>
                 <th scope="col">avance</th>
                 <th scope="col">mode</th>
@@ -75,6 +86,7 @@
                                 no suivi here
                             @endif
                         </th>
+                        <th>{{$item->user->name}}</th>
                         <td>{{$item->benefice}}</td>
                         <td>{{$item->avance}}</th>
                         <td>{{$item->mode}}</th>

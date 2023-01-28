@@ -16,12 +16,18 @@ class facture extends Model
         'benefice',
         'avance',
         'mode',
+        'user_id',
         'suivi_id'
     ];
 
     public function fournisseur()
     {
         return $this->belongsTo(fournisseur::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function suivi()

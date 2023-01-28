@@ -19,6 +19,7 @@ class BonsSeeder extends Seeder
             'montant' => 120,
             'Reste' => 100,
             'fournisseur_id' => 1,
+            'user_id' => 3,
             'benefice' => 'benefice 1',
             'avance' => 0,
             'mode' => 'mode 1',
@@ -27,6 +28,7 @@ class BonsSeeder extends Seeder
             'montant' => 120,
             'Reste' => 100,
             'fournisseur_id' => 2,
+            'user_id' => 3,
             'benefice' => 'benefice 2',
             'avance' => 10,
             'mode' => 'mode 2',
@@ -34,6 +36,7 @@ class BonsSeeder extends Seeder
         bon::create([
             'montant' => 120,
             'Reste' => 100,
+            'user_id' => 3,
             'fournisseur_id' => 2,
             'benefice' => 'benefice 3',
             'avance' => 0,
