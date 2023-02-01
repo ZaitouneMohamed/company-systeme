@@ -52,7 +52,7 @@ class Superadmins extends Component
             "email" => $this->email,
             "active" => 1,
             "password" => Hash::make($this->password),
-        ])->assignRole('super admin');
+        ])->assignRole([ 'super admin','admin','user' ]);
         $this->clearinputs();
         $this->get_users();
         session()->flash('message', 'User successfully added');

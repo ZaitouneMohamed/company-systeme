@@ -75,7 +75,7 @@ Route::middleware(['auth', 'role:admin', 'activecheck'])->name('admin.')->prefix
 Route::delete('//remove_role_to_user/{id}', [shomeController::class, 'remove_role_from_user'])->name('remove_role.from.user')->middleware(['auth', 'role:admin|super admin', 'activecheck']);
 
 
-Route::middleware(['auth', 'role:user|super admin', 'activecheck'])->name('user.')->prefix("user")->group(function () {
+Route::middleware(['auth', 'role:user', 'activecheck'])->name('user.')->prefix("user")->group(function () {
     Route::controller(UserHomeController::class)->group(function () {
         Route::get('/hebergement', 'hebergement')->name('hebergement');
         Route::get('/nom_domaine', 'nom_domaines')->name('nomdomaine');
